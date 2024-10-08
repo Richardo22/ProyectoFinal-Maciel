@@ -1,0 +1,16 @@
+{% extends 'padre.html' %}
+
+
+{% block contenidoQueCambia %}
+    
+    <p>Estamos buscando si hay empanadas de {{nombre}}</p> 
+    {% if empanadas %}
+        {% for empanada in empanadas %}
+            <h3>{{ empanada.nombre }}</h3>
+            <h3>Precio: {{ empanada.precio }}</h3>
+        {% endfor %}
+    {% else %}
+        <p>No se encontraron empanadas.</p>
+    {% endif %}
+{% endblock contenidoQueCambia %}
+    
