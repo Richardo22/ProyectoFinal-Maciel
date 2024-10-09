@@ -3902,6 +3902,29 @@ textarea.form-control-lg {
     padding: 0;
     overflow-y: visible;
   }
+  .banner_img {
+    position: relative;
+    /* display: inline-block; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Cambia a blanco para mejor visibilidad */
+    text-align: center;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+ 
 }
 @media (min-width: 768px) {
   .navbar-expand-md {
@@ -4205,7 +4228,9 @@ textarea.form-control-lg {
   padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
   color: var(--bs-card-color);
 }
-
+.img-delivery{
+  width: 350px;
+}
 .card-title {
   margin-bottom: var(--bs-card-title-spacer-y);
 }
