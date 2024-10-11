@@ -2,17 +2,8 @@
 {% block contenidoQueCambia %}
 
      <form action="{% url 'HamburguesaFormulario' %}" method="post">{% csrf_token %}
-        
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" required>
-        
-        <label for="ingredientes">Ingredientes:</label>
-        <textarea name="ingredientes" required></textarea>
-        
-        <label for="precio">Precio:</label>
-        <input type="number" name="precio" step="0.01" required>
-        
-        <button type="submit">Agregar</button>
+      {{mi_formulario.as_p}}
+      <button type="submit">Agregar</button>
      </form>
 
 {% endblock contenidoQueCambia %}

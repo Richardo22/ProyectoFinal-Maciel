@@ -1,0 +1,10 @@
+{% extends 'padre.html' %}
+{% block contenidoQueCambia %}
+    <form action="{% url 'ModificarPizza' id %}" method="post"> {% csrf_token %}
+        {{mi_formulario.as_p}}
+        <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-modificar" type="submit"">Actualizar</button>
+        </form>
+        </div>
+    </form>
+{% endblock contenidoQueCambia %}

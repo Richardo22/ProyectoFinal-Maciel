@@ -3,10 +3,18 @@
 {% block contenidoQueCambia %}
     <h1>Lista de Empanadas</h1>
     {% for empanada in empanadas %}
-    <li>{{empanada.nombre}} -- 
-        {{empanada.ingredientes}} -- 
-        {{empanada.precio}}
+    <li>
+        {{empanada}}  
+        
     </li>
+    <div class="d-grid gap-2 d-md-block">
+        <form action="{% url 'EliminarEmpanadas' empanada.id %}" method="post">{% csrf_token %}
+            <button class="btn btn-eliminar" type="submit"">Eliminar</button>
+        </form>
+        <buttton>
+            <a href="{% url 'ModificarEmpanadas' empanada.id %}">Editar</a> 
+        </buttton>
+    </div>
     {% endfor %} 
 {% endblock contenidoQueCambia %}
     

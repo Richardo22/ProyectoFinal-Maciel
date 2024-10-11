@@ -1,12 +1,20 @@
 {% extends 'padre.html' %}
 
 {% block contenidoQueCambia %}
-    <h1>Lista de Hamburguesas</h1>
+    <h1>Lista de hamburguesa</h1>
     {% for hamburguesa in hamburguesas %}
-    <li>{{hamburguesa.nombre}} -- 
-        {{hamburguesa.ingredientes}} -- 
-        {{hamburguesa.precio}}
+    <li>
+        {{hamburguesa}}  
+        
     </li>
+    <div class="d-grid gap-2 d-md-block">
+        <form action="{% url 'EliminarHamburguesa' hamburguesa.id %}" method="post">{% csrf_token %}
+            <button class="btn btn-eliminar" type="submit"">Eliminar</button>
+        </form>
+        <buttton>
+            <a href="{% url 'ModificaHamburguesa' hamburguesa.id %}">Editar</a> 
+        </buttton>
+    </div>
     {% endfor %} 
 {% endblock contenidoQueCambia %}
     

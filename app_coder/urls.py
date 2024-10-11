@@ -16,5 +16,10 @@ urlpatterns = [
     path('lista_empanada/',lista_empanadas, name='ListaEmpanada'),
     path('lista_hamburguesa/',lista_hamburguesas, name='ListaHamburguesa'),
     path('lista_pizza/',lista_pizzas, name='ListaPizza'),
-
+    path('elimina_empanada/<int:id>',eliminar_empanadas, name='EliminarEmpanadas'),
+    path('modificar_empanada/<int:id>',editar_empanadas, name='ModificarEmpanadas'),
+    path('elimina_hamburgesa/<int:id>',eliminar_hamburguesa, name='EliminarHamburguesa'),
+    path('modifica_hamburguesa/<int:id>',editar_hamburguesa, name='ModificaHamburguesa'),
+    path('elimina_pizza/<int:id>',eliminar_pizza, name='EliminarPizza'),
+    path('modifica_pizza/<int:id>',editar_pizza, name='ModificarPizza')#
     ]
