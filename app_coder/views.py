@@ -112,6 +112,16 @@ def buscar_empanada(req):
   
   return render(req, "resultado_busqueda.html", {"nombre": nombre, "empanadas": empanadas})
 
+def lista_empanadas(req):
+    empanadas = Empanada.objects.all()
+    return render(req, "lista_empanada.html", {"empanadas": empanadas})
+def lista_hamburguesas(req):
+    hamburguesas = Hamburguesa.objects.all()
+    return render(req, "lista_hamburguesa.html", {"hamburguesas": hamburguesas})
+def lista_pizzas(req):
+    pizzas = Pizza.objects.all()
+    return render(req, "lista_pizza.html", {"pizzas": pizzas})
+
     
 
 

@@ -1,0 +1,12 @@
+{% extends 'padre.html' %}
+
+{% block contenidoQueCambia %}
+    <h1>Lista de Hamburguesas</h1>
+    {% for hamburguesa in hamburguesas %}
+    <li>{{hamburguesa.nombre}} -- 
+        {{hamburguesa.ingredientes}} -- 
+        {{hamburguesa.precio}}
+    </li>
+    {% endfor %} 
+{% endblock contenidoQueCambia %}
+    
