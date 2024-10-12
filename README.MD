@@ -11,5 +11,6 @@
 11-en construccion la clasificacion de usuario, agregar producto y compras
 video youtube
 
-https://www.youtube.com/watch?v=7sTJ2zUC5pk&ab_channel=rikr201
+https://youtu.be/ftDWz7esUX8
+
 
