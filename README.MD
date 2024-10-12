@@ -9,5 +9,7 @@
 9-todas los productos para las 3 clases estan cargadas
 10-se agrego el configuracion iniciar y cerrar sesion, modificar, eliminar, comprar
 11-en construccion la clasificacion de usuario, agregar producto y compras
+video youtube
 
+https://www.youtube.com/watch?v=7sTJ2zUC5pk&ab_channel=rikr201
 
