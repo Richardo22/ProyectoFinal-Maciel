@@ -1,5 +1,12 @@
 from django.http import HttpResponse,HttpResponseRedirect
+from  django.contrib.auth.forms import AuthenticationForm,UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from .models import *
 from .forms import *
 
@@ -138,25 +145,28 @@ def lista_hamburguesas(req):
 def lista_pizzas(req):
     pizzas = Pizza.objects.all()
     return render(req, "lista_pizza.html", {"pizzas": pizzas})
-
+@login_required
 def eliminar_empanadas(req, id):
     if req.method == 'POST':
         empanada = Empanada.objects.get(id=id)
         empanada.delete()
         empanadas = Empanada.objects.all()
         return render(req, "lista_empanada.html", {"empanadas": empanadas})
+@login_required    
 def eliminar_hamburguesa(req, id):
     if req.method == 'POST':
         hamburguesa = Hamburguesa.objects.get(id=id)
         hamburguesa.delete()
         hamburguesas = Hamburguesa.objects.all()
         return render(req, "lista_hamburguesa.html", {"hamburguesas": hamburguesas})
+@login_required    
 def eliminar_pizza(req, id):
     if req.method == 'POST':
         pizza = Hamburguesa.objects.get(id=id)
         pizza.delete()
         pizzas = Hamburguesa.objects.all()
-        return render(req, "lista_pizza.html", {"pizzas": pizzas})    
+        return render(req, "lista_pizza.html", {"pizzas": pizzas}) 
+@login_required       
 def editar_empanadas(req, id):
     empanada = Empanada.objects.get(id=id)
     if req.method == 'POST':
@@ -178,6 +188,7 @@ def editar_empanadas(req, id):
             'precio': empanada.precio
         })
     return render(req, 'editar_empanada.html', {'mi_formulario': mi_formulario, "id": empanada.id})
+@login_required
 def editar_hamburguesa(req, id):
     hamburguesa = Hamburguesa.objects.get(id=id)
     if req.method == 'POST':
@@ -199,7 +210,7 @@ def editar_hamburguesa(req, id):
             'precio': hamburguesa.precio
         })
     return render(req, 'editar_hamburguesa.html', {'mi_formulario': mi_formulario, "id": hamburguesa.id})
-
+@login_required
 def editar_pizza(req, id):
     pizza = Pizza.objects.get(id=id)
     if req.method == 'POST':
@@ -221,6 +232,97 @@ def editar_pizza(req, id):
             'precio': pizza.precio
         })
     return render(req, 'editar_pizza.html', {'mi_formulario': mi_formulario, "id": pizza.id})
+
+def login_view(req):
+
+  if req.method == 'POST':
+    
+    mi_formulario= AuthenticationForm(req, data=req.POST)
+    if mi_formulario.is_valid():
+
+      data = mi_formulario.cleaned_data
+      usuario = data['username']
+      psw = data['password']
+
+      user = authenticate(username=usuario, password=psw)
+
+      if user:
+        login(req, user)
+        return render(req, "inicio.html", { "mensaje": f"Bienvenido {usuario}"})
+      else:
+        return render(req, "inicio.html", { "mensaje": f"Datos incorrectos!"})
+
+    else:
+      return render(req, "login.html", { "mi_formulario": mi_formulario })  
+
+  else:
+
+    mi_formulario = AuthenticationForm()
+    return render(req, "login.html", { "mi_formulario": mi_formulario })
+
+def register(req):
+    if req.method == 'POST':
+        mi_formulario= UserCreationForm(req.POST)
+        if mi_formulario.is_valid():
+            data = mi_formulario.cleaned_data
+            usuario = data['username']
+            mi_formulario.save()
+            return render(req, "inicio.html", { "mensaje": f"Bienvenido {usuario} creado con exito"})
+        else:
+               return render(req, "registro.html", { "mi_formulario": mi_formulario })
+    else:
+            mi_formulario = UserCreationForm()
+            return render(req, "registro.html", { "mi_formulario": mi_formulario })
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+            
+
+
+
+
+   
 
 
 

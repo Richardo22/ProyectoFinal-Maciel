@@ -9,13 +9,24 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'ListaEmpanada' %}">Empanadas</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'ListaHamburguesa' %}">Hamburguesa</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'ListaPizza' %}">Pizza</a></li>
-            </ul>
-            <form class="d-flex">
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-primary me-md-2" type="button">Inicio se Sesion</button>
+                <li class="nav-item"><a class="nav-link" href="{% url 'ListaPizza' %}">Agregar Producto</a></li>
+            </ul> 
+            {% if user.is_authenticated %}            
+                
+                    <p>Bienvenido {{user.username}}</p>
+                    <form method="post" action="{% url 'Logout' %}">
+                        {% csrf_token %}
+                        <button style= "margin: 10px;" class="btn btn-primary" type="submit">Cerrar Sesión</button>
+                                 
+                </form>
+            {% else %}
+                <a style= "margin: 10px;" class="btn btn-primary" href="{% url 'Login' %}" role="button">Inicio de Sesión</a>
+                {% endif %} 
+                
+                
+                               
                 <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Carrito
+                    <i class="bi-cart-fill me-1"></i>                    
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
             </form>

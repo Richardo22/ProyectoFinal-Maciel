@@ -7,12 +7,15 @@
         {{pizza}}  
         
     </li>
-    <div class="d-grid gap-2 d-md-block">
+    <div style="display: flex;column-gap: 5px;">
         <form action="{% url 'EliminarPizza' pizza.id %}" method="post">{% csrf_token %}
-            <button class="btn btn-eliminar" type="submit"">Eliminar</button>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
         </form>
         <buttton>
-            <a href="{% url 'ModificarPizza' pizza.id %}">Editar</a> 
+            <a type="submit" class="btn btn-primary" href="{% url 'ModificarPizza' pizza.id %}">Editar</a>             
+        </buttton>
+        <buttton>
+            <a  type="submit" class="btn btn-success" href="{}"">Comprar</a>
         </buttton>
     </div>
     {% endfor %} 
