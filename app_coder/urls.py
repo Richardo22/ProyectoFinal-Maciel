@@ -21,6 +21,7 @@ urlpatterns = [
     path('modificar_empanada/<int:id>',editar_empanadas, name='ModificarEmpanadas'),
     path('elimina_hamburgesa/<int:id>',eliminar_hamburguesa, name='EliminarHamburguesa'),
     path('modifica_hamburguesa/<int:id>',editar_hamburguesa, name='ModificaHamburguesa'),
+    path('acerca_demi',acerca_demi,name='AcercadeMi'),
     path('elimina_pizza/<int:id>',eliminar_pizza, name='EliminarPizza'),
     path('modifica_pizza/<int:id>',editar_pizza, name='ModificarPizza'),
     path('login/',login_view, name='Login'),

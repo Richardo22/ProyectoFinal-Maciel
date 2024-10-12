@@ -38,6 +38,8 @@ def crea_producto(req, nombre, ingredientes, precio):
 
 def inicio(req):
     return render(req, 'inicio.html', {})
+def acerca_demi(req):
+   return render(req, 'Acerca de Mi.html', {})
 def empanada(req):
     return render(req, 'empanada.html', {})
 def hamburguesa(req):
