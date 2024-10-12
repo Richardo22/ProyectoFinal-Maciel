@@ -6,4 +6,8 @@
 7-app_coder/hamburguesa-formulario/:carga las hamburguesas
 7-app_coder/pizza-formulario/:carga las pizza
 8-app_coder/buscar-empanada: devuelve el tipo de empanada buscado con el precio
-cargados: humita, jamon y queso, saltenia, cordobeza
+9-todas los productos para las 3 clases estan cargadas
+10-se agrego el configuracion iniciar y cerrar sesion, modificar, eliminar, comprar
+11-en construccion la clasificacion de usuario, agregar producto y compras
+
+
